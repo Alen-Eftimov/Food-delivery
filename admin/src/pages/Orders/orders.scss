@@ -1,0 +1,82 @@
+.order {
+  .order-list {
+    .order-item {
+      display: grid;
+      grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
+      align-items: start;
+      gap: 30px;
+      border: 1px solid tomato;
+      padding: 20px;
+      margin: 30px 0px;
+      font-size: 14px;
+      color: #505050;
+      border-radius: 5px;
+
+      .order-item-food,
+      .order-item-name {
+        font-weight: 600;
+      }
+
+      .order-item-date {
+        margin-top: 10px;
+      }
+      
+      .order-item-name {
+        margin-top: 30px;
+        margin-bottom: 5px;
+      }
+
+      .order-item-address {
+        margin-bottom: 10px;
+      }
+
+      select {
+        background-color: #ffe8e4;
+        border: none;
+        // border: 1px solid tomato;
+        width: max(10vw, 120px);
+        padding: 10px;
+        outline: none;
+        border-radius: 5px;
+        color: white;
+
+        &.status-processing {
+          background-color: rgba(255, 166, 0, 0.966);
+        }
+        
+        &.status-delivery {
+          background-color: rgba(0, 0, 255, 0.507);
+        }
+        
+        &.status-delivered {
+          background-color: rgba(0, 128, 0, 0.507);
+        }
+        
+        &.status-canceled {
+          background-color: rgba(255, 0, 0, 0.507);
+        } 
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .order {
+    .order-list {
+      .order-item {
+        grid-template-columns: 0.5fr 2fr 1fr;
+        padding: 15px 8px;
+        font-size: 12px;
+
+        img {
+          width: 40px;
+        }
+  
+        select {
+          padding: 5px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
