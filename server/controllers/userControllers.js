@@ -68,8 +68,8 @@ const registerUser = async (req, res) => {
       const salt = bcrypt.genSaltSync(10);
       const hashedPassword = bcrypt.hashSync(password, salt)
 
-      const sql2 = `INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)`
-      db.query(sql2, [name, email, hashedPassword, 'user'], (error, data) => {
+      const sql2 = `INSERT INTO users (name, email, password, cart_data,role) VALUES (?, ?, ?, ?, ?)`
+      db.query(sql2, [name, email, hashedPassword, JSON.stringify({}), 'user'], (error, data) => {
         if (error) return res.status(500).json({success: false, message: 'Error inserting user'})
         const userId = data.insertId;
         const userRole = 'user';

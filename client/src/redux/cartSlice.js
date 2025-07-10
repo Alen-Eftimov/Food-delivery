@@ -1,38 +1,3 @@
-// store/slices/cartSlice.js
-// import { createSlice } from '@reduxjs/toolkit';
-
-// const initialState = {
-//   cartItems: {}, // { itemId: quantity }
-//   food_list: [], // fetched from API
-// };
-
-// const cartSlice = createSlice({
-//   name: 'cart',
-//   initialState,
-//   reducers: {
-//     setFoodList: (state, action) => {
-//       state.food_list = action.payload;
-//     },
-//     addToCart: (state, action) => {
-//       const itemId = action.payload;
-//       state.cartItems[itemId] = (state.cartItems[itemId] || 0) + 1;
-//     },
-//     removeFromCart: (state, action) => {
-//       const itemId = action.payload;
-//       if (state.cartItems[itemId]) {
-//         state.cartItems[itemId] -= 1;
-//         if (state.cartItems[itemId] <= 0) delete state.cartItems[itemId];
-//       }
-//     },
-//     setCartItems: (state, action) => {
-//       state.cartItems = action.payload;
-//     },
-//   },
-// });
-
-// export const { setFoodList, addToCart, removeFromCart, setCartItems } = cartSlice.actions;
-// export default cartSlice.reducer;
-
 import { createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
