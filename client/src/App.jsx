@@ -1,4 +1,4 @@
-import {createBrowserRouter, Outlet, RouterProvider} from 'react-router-dom';
+import {createBrowserRouter, Outlet, RouterProvider, useOutletContext} from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar'
 import Home from './pages/Home/Home.jsx'
 import Cart from './pages/Cart/Cart.jsx';
@@ -35,12 +35,17 @@ const App = () => {
       {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> : <></>}
         <div className="app">
           <Navbar setShowLogin={setShowLogin} />
-          <Outlet />
+          <Outlet context={{ setShowLogin }} />
         </div>
         <Footer />
       </>
     )
   }
+
+  const CartWrapper = () => {
+    const { setShowLogin } = useOutletContext();
+    return <Cart setShowLogin={setShowLogin} />;
+  };
 
   const router = createBrowserRouter([
     {
@@ -53,7 +58,7 @@ const App = () => {
         },
         {
           path: '/cart',
-          element: <Cart />
+          element: <CartWrapper /> 
         },
         {
           path: '/order',
@@ -69,7 +74,8 @@ const App = () => {
         }
       ]
     }
-  ])
+  ]) 
+
   return (
     <div>
       <RouterProvider router={router} />

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { removeFromCart } from '../../redux/cartSlice'
 import { getTotalCartAmount } from '../../redux/cartSelectors'
 
-const Cart = () => {
+const Cart = ({ setShowLogin }) => {
 
   const navigate = useNavigate()
   const dispatch = useDispatch();
@@ -17,6 +17,14 @@ const Cart = () => {
 
   const handleRemoveFromCart = (itemId) => {
     dispatch(removeFromCart(itemId, token));
+  };
+
+  const handleProceedToCheckout = () => {
+    if (!token) {
+      setShowLogin(true);
+    } else {
+      navigate('/order');
+    }
   };
 
   return (
@@ -69,8 +77,8 @@ const Cart = () => {
               <b>Total</b>
               <b>${cartAmount === 0 ? 0 : cartAmount+2}</b>
             </div>
-          </div>
-          <button  onClick={() => navigate('/order')}>PROCEED TO CHECKOUT</button>
+          </div>          
+          <button onClick={handleProceedToCheckout}>PROCEED TO CHECKOUT</button>
         </div>
         <div className="cart-promocode">
           <div>

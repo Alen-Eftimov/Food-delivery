@@ -115,6 +115,16 @@
 @media (max-width: 750px) {
   .cart {
 
+    .cart-items {
+  
+      .cart-items-item {
+    
+        .cross {
+          padding: 8px 10px;
+        }
+      }
+    }
+
     .cart-bottom {
       flex-direction: column-reverse;
     }
